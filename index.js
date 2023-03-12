@@ -8,7 +8,6 @@ const io = new Server(server, {
             'http://localhost:3000',
             'https://tiktok-lekhanh.web.app',
             'https://tiktok-socket.onrender.com',
-            'https://tiktok-socket-production.up.railway.app',
         ],
     },
 })
