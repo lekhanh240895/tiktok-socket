@@ -1,8 +1,8 @@
 const app = require('express')()
 const { createServer } = require('http')
 const { Server } = require('socket.io')
-const server = createServer(app)
-const io = new Server(server, {
+const httpServer = createServer(app)
+const io = new Server(httpServer, {
     cors: {
         origin: [
             'http://localhost:3000',
@@ -11,6 +11,9 @@ const io = new Server(server, {
         ],
     },
 })
+const cors = require('cors')
+
+app.use(cors())
 
 app.get('/', function (req, res, next) {
     res.json('SocketIO server!')
@@ -70,6 +73,6 @@ io.on('connection', (socket) => {
     })
 })
 
-server.listen(IO_PORT, () => {
+httpServer.listen(IO_PORT, () => {
     console.log(`Socket.IO server running at http://localhost:${IO_PORT}`)
 })
