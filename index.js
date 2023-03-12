@@ -1,10 +1,20 @@
 const app = require('express')()
-const server = require('http').createServer(app)
-const io = require('socket.io')(server, {
+const { createServer } = require('http')
+const { Server } = require('socket.io')
+const cors = require('cors')
+const server = createServer(app)
+const io = new Server(server, {
     cors: {
-        origin: ['http://localhost:3000', 'https://tiktok-lekhanh.web.app'],
+        origin: [
+            'http://localhost:3000',
+            'https://tiktok-lekhanh.web.app',
+            'https://tiktok-socket.onrender.com',
+        ],
     },
 })
+
+app.use(cors())
+
 require('dotenv').config()
 
 const IO_PORT = process.env.SOCKETIO_PORT || 3000
