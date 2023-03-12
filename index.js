@@ -1,7 +1,6 @@
 const app = require('express')()
 const { createServer } = require('http')
 const { Server } = require('socket.io')
-const cors = require('cors')
 const server = createServer(app)
 const io = new Server(server, {
     cors: {
@@ -12,8 +11,6 @@ const io = new Server(server, {
         ],
     },
 })
-
-app.use(cors())
 
 require('dotenv').config()
 
