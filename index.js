@@ -6,14 +6,11 @@ const io = new Server(httpServer, {
     cors: {
         origin: [
             'http://localhost:3000',
-            'https://tiktok-lekhanh.web.app',
+            'https://tiktok-lekhanh.vercel.app',
             'https://tiktok-socket.onrender.com',
         ],
     },
 })
-const cors = require('cors')
-
-app.use(cors())
 
 app.get('/', function (req, res, next) {
     res.json('SocketIO server!')
