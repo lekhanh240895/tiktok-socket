@@ -7,7 +7,7 @@ const io = require('socket.io')(server, {
 })
 require('dotenv').config()
 
-const IO_PORT = process.env.SOCKETIO_PORT
+const IO_PORT = process.env.SOCKETIO_PORT || 3000
 
 let onlineUsers = []
 
